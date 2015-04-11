@@ -1,0 +1,31 @@
+	<div class="formcontainerm">
+				<div class="subcontainer">
+					<p class="formbold">Add To My Items</p>
+					<form name="add_item_form" ng-submit="addItem(adding_item)">
+						<input type="text" class="additem" placeholder="User Name" ng-model="adding_item.user_name"/>
+
+						<div ng-init="adding_item.imageurl = ''">
+							<select class="categoryselect">
+								<option>Choose A Category</option>
+								<option value="1">Appliances</option>
+								<option value="2">Furniture</option>
+								<option value="3">Household Goods</option>
+								<option value="4">Electronics</option>
+								<option value="5">Books/Movies/Music</option>
+								<option value="6">Sporting Goods</option>
+								<option value="7">Decorative Items</option>
+								<option value="8">Toys</option>
+								<option value="9">Childrens Clothing</option>
+								<option value="10">Womens Clothing</option>
+								<option value="11">Mens Clothing</option>
+								<option value="12">Miscellaneous</option>
+							</select>
+						</div>
+						<textarea class="additem" placeholder="Description" placeholder style="padding-top: 10px" maxlength="65" style="width:238px" line-height="14px" rows="2" ng-model="adding_item.description" ></textarea>
+
+						<input type="text" class="additem" placeholder="Image Filepath" ng-model="adding_item.imageurl"/>
+
+						<input class="additem" type="submit" value="Add Item"</>
+					</form>
+				</div>
+			</div>

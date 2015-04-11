@@ -1,0 +1,342 @@
+$gray: #E8E8E8;
+$darkgray: #919191;
+$red: #ff0000;
+$pink: #ff00ff;
+$darkred:#B80000;
+$richblue: #0540F2;
+$mediumblue: #0C59F2;
+$paleblue: #94CEF2;
+$banana: #F2EA72;
+$orange: #F2A444;
+$white: #FFFFFF;
+$paleyellow:#FFF8E8;
+
+$padding:10px;
+$margin:10px;
+
+$font-size: 12px;
+$font-family: 'helvetica', sans-serif;
+$font-weight: regular;
+
+
+/*@import url('http://fonts.googleapis.com/css?family=Comfortaa:400,700,300|Ruda:400,700,900');*/
+@import url('normalize.css');
+
+//Utilities
+.group:after {
+content: "";
+display: table;
+clear: both;
+}
+* {
+position: relative;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+-ms-box-sizing: border-box;
+box-sizing: border-box;
+}
+
+html, body, .wrapper {
+min-height:100%;
+min-width: 320px;
+max-width: 559px
+
+}
+
+body {
+font-family: $font-family;
+font-size: $font-size;
+/*background: url(../images/BreakPt320V4.jpg) no-repeat;*/
+background-position: top left;
+}
+
+.logobar {
+min-width: 320px;
+max-width: 559px;
+width: 100%;
+height: 128.5px;
+background-color: $white;
+padding: 0px;
+box-shadow:0 8px 6px -6px $darkgray; 	
+-webkit-box-shadow: 0 8px 6px -6px $darkgray;
+-moz-box-shadow: 0 8px 6px -6px $darkgray;
+display: block;
+float: center;
+position: fixed;
+top: 0px;
+margin-bottom: $margin;
+z-index: 1000;
+}
+
+.logobackground {
+height: 84px;
+width: 100%;
+margin-bottom: 8px;
+background-color: $red;
+/*background: url(../images/logo.svg);
+background-repeat: no-repeat;
+background-position: -95px -267px;
+background-size: 300%;*/
+}
+
+.logocontainer {
+height: 84px;
+width: 100%;
+max-width: 559px;
+background-color: none;
+top: 6px;
+left: -617px;
+margin-bottom: 8px;
+/*background: url(../images/logo.svg);
+background-repeat: no-repeat;
+background-position: -95px -267px;
+background-size: 300%;*/
+}
+
+.topbar {
+margin: 0px;
+float: left;
+}
+
+.search {
+height: 28px;
+width: 160px;
+padding-left: $padding;
+border-style: solid;
+border-width: 1px;
+border-color: $gray;
+margin-left: $margin*1.5;
+margin-right: 0px;
+}
+
+.familyname {
+float: right;
+margin-right: $margin*1.5;
+margin-top: none;
+text-align: right;
+line-height: 140%;
+}
+
+/*IMAGE AREA STYLES*/
+
+
+.content {
+height: 100%;
+width: 100%;
+padding-top: 138px;
+background-color: none;
+display: inline-block;
+position: relative;
+}
+
+.item-group {
+min-height: 370px;
+background: none;
+}
+
+.picturebox {
+height:317.5px;
+min-width:290px;
+max-width: 559px;
+width: 94.5%;
+background-color: none;
+background: url(../images/pattern.svg);
+margin-right: $margin*1.5;
+margin-left: $margin*1.5;
+text-align: center;
+margin-bottom: 5.5px;
+display: inline-block;
+}
+
+.postedbybox {
+width: 189px;
+height: 12px;
+margin-left: $margin*1.5;
+margin-top: 2px;
+text-align: center;
+text-transform: uppercase;
+float: left;
+}
+
+.descriptionbox {
+width: 189px;
+height: 24px;
+margin-left: $margin*1.5;
+margin-top: 2px;
+text-align: center;
+float: left;
+}
+
+.contactbuttonm {
+float: right;
+margin-right: $margin*1.5;
+}
+/*ADD AN ITEM FORM STYLES*/
+
+.formcontainerm {
+height:198px;
+min-width:290px;
+max-width: 559px;
+width: 93%;
+margin-right: $margin*1.5;
+margin-left: $margin*1.5;
+margin-top: $margin*1.5;
+margin-bottom: 295px;
+display: inline-block;
+background-color: none;
+position: relative;
+bottom: 0;
+}
+
+.additem {
+height: 28px;
+width: 238px;
+padding-left: $padding;
+padding-top: 2px;
+display: inline-block;
+border-style: solid;
+border-width: 1px;
+border-color: $darkgray;
+float: center;
+position: relative;
+margin-top: 0px;
+margin-bottom: $margin;
+}
+
+.subcontainer {
+height:198px;
+width: 238px;
+margin-left: -119px;
+left: 50%;
+margin-right:100%;
+}
+
+.categoryselect {
+display: block;
+width: 238px;
+height: 28px;
+padding: 0px;
+font-size: $font-size;
+color: black;
+margin-left: -119px;
+left: 50%;
+margin-bottom: $margin;
+}
+
+
+/*.additembutton {
+height: 28px;
+width: 238px;
+margin-left: $margin*1.5;
+background-color: $pink;
+color: $white;
+}*/
+
+.additem [type=submit] {
+background-color: $darkred;
+color: white;
+}
+
+/*BOTTOM BAR STYLES*/
+
+.bottombar {
+height: 54px;
+width: 100%;
+max-width: 559px;
+padding: $padding*1.5;
+
+background-color: $red;
+position: fixed;
+bottom: 0px;
+}
+
+.bottomtextleft {
+height: 24px;
+width: 68px;
+margin: 0px;
+display: inline-block;
+float: left;
+}
+
+.bottomtextctr {
+height: 24px;
+width: 68px;
+float: center;
+margin: 0px auto;
+}
+
+.bottomtextright {
+height: 24px;
+width: 68px;
+margin: 0px;
+display: inline-block;
+float: right;
+}
+
+h1 {
+font-size: $font-size*4.5;
+font-weight: 700;
+color: $pink;
+text-align: center;
+}
+
+h2 {
+font-family: 'helvetica', sans-serif;
+font-size: $font-size*1.25;
+font-weight: regular;
+color: $white;
+letter-spacing: 4px;
+}
+
+p {font-family: 'helvetica', sans-serif;
+font-size: $font-size;
+font-weight: regular;
+color: black;
+margin: 0px;
+}
+
+p.bold {font-family: 'helvetica', sans-serif;
+font-size: $font-size;
+font-weight: bold;
+color: $darkred;
+margin: 0px;
+}
+
+p.postedby {
+font-family: 'helvetica', sans-serif;
+font-size: $font-size;
+font-weight: regular;
+color: black;
+margin: 0px;
+}
+
+p.description {
+font-family: 'helvetica', sans-serif;
+font-size: $font-size;
+font-weight: regular;
+color: black;
+margin: 0px;
+line-height: 14px;
+}
+
+p.bottombold {font-family: 'helvetica', sans-serif;
+font-size: $font-size;
+font-weight: bold;
+text-transform: uppercase;
+text-align: center;
+color: $white;
+margin: 0px;
+line-height: 14px;
+}
+
+p.formbold {font-family: 'helvetica', sans-serif;
+font-size: 14px;
+font-weight: bold;
+text-align: center;
+color: black;
+margin-bottom: $margin;
+}
+
+.cl { clear:both; 
+}
+
