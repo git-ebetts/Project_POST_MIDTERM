@@ -1,0 +1,32 @@
+<section class="content" ng-controller="LoginController">
+
+	<h1 class="red">Sign In</h1>
+
+<p class="error" ng-show="message">{{ message }}</p>
+
+	<form name="loginform" class="subcontainer" ng-submit="login()">
+<!-- 	<p class="error" ng-show="message" >{{ message }}</p> -->
+	<input type="text" class="additem" placeholder="Your Stuff XChange Group Name" autofocus ng-required="true" ng-model="user.group_name"/>
+
+<!-- 	<p class="error" ng-show="loginform.text.$invalid && loginform.text.$touched">Please enter a valid email address</p> -->
+
+
+	<input type="email" name="email" class="additem" placeholder="Email Address"  
+	ng-required="true" ng-model="user.email">
+
+<!-- 	<p class="error" ng-show="loginform.email.$invalid && loginform.email.$touched">Please enter a valid email address</p> -->
+
+
+	<input type="password" name="password" class="additem" placeholder="Password" 
+	ng-required="true" ng-model="user.password">
+
+<!-- 	<p class="error" ng-show="loginform.password.$invalid && loginform.password.$touched">Password required</p> -->
+
+	<button type="submit" class="additem">Sign In</button>
+</form>
+</section>
+
+
+
+<!--  <button class="btn btn-success" ng-disabled="add_portfolio.$invalid" type="button" ng-click="addPortfolio( adding_portfolio )">Add Portfolio</button>
+ -->

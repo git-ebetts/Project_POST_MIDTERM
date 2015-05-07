@@ -8,6 +8,7 @@ $mediumblue: #0C59F2;
 $paleblue: #94CEF2;
 $banana: #F2EA72;
 $orange: #F2A444;
+$green: #76EE00;
 $white: #FFFFFF;
 $paleyellow:#FFF8E8;
 
@@ -117,6 +118,10 @@ text-align: right;
 line-height: 140%;
 }
 
+.signin {
+	margin-top: $margin;
+}
+
 /*IMAGE AREA STYLES*/
 
 
@@ -127,6 +132,15 @@ padding-top: 138px;
 background-color: none;
 display: inline-block;
 position: relative;
+}
+
+.contentbl {
+height: 100%;
+width: 100%;
+padding-top: 138px;
+display: inline-block;
+position: relative;
+background-color: $darkgray;
 }
 
 .item-group {
@@ -204,7 +218,7 @@ margin-bottom: $margin;
 }
 
 .subcontainer {
-height:198px;
+height:300px;
 width: 238px;
 margin-left: -119px;
 left: 50%;
@@ -274,9 +288,16 @@ float: right;
 }
 
 h1 {
-font-size: $font-size*4.5;
-font-weight: 700;
-color: $pink;
+font-size: $font-size*3;
+font-weight: lighter;
+color: $white;
+text-align: center;
+}
+
+h1.red {
+font-size: $font-size*3;
+font-weight: lighter;
+color: black;
 text-align: center;
 }
 

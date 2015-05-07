@@ -1,4 +1,4 @@
-		<main class="content" ng-controller="AddItemController">
+		<section class="content" ng-controller="AddItemController">
 
 
 
@@ -7,7 +7,7 @@
 					<img ng-src="{{ item.imageurl }}">
 				</figure>
 
-				<div class="postedbybox">{{ item.user_name }}
+				<div class="postedbybox">{{ item.first_name }}{{ item.last_name }} 
 					
 				</div>
 				<div class="contactbuttonm">
@@ -23,11 +23,18 @@
 			<!--FORM CONTAINER MOBILE -->
 			<div class="formcontainerm">   
 				<div class="subcontainer">
+					
 					<p class="formbold" id="bottom">Add To My Items</p>
+					
 					<form name="add_item_form" ng-submit="addItem(adding_item)">
-						<input type="text" class="additem" placeholder="User Name" ng-model="adding_item.user_name"/>
+						
+						<input type="text" class="additem" placeholder="First Name" ng-model="adding_item.first_name"/>
+
+						<input type="text" class="additem" placeholder="Last Name" ng-model="adding_item.last_name"/>
+
 
 						<div ng-init="adding_item.imageurl = ''">
+							
 							<select class="categoryselect">
 								<option>Choose A Category</option>
 								<option value="1">Appliances</option>
@@ -44,16 +51,19 @@
 								<option value="12">Miscellaneous</option>
 							</select>
 						</div>
+
 						<textarea class="additem" placeholder="Description" placeholder style="padding-top: 10px" maxlength="65" style="width:238px" line-height="14px" rows="2" ng-model="adding_item.description" ></textarea>
 
-						<input type="text" class="additem" placeholder="Image Filepath" ng-model="adding_item.imageurl"/>
+<!-- 						<input type="text" class="additem" placeholder="Image Filepath" ng-model="adding_item.imageurl"/> -->
 
 						<input class="additem" type="submit" value="Add Item"</>
+
 						<a id="bottom"></a>
+
 					</form>
 				</div>
 			</div> 
 
 
 
-		</main>
+		</section>
