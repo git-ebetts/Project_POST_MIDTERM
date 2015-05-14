@@ -29,9 +29,15 @@ stuffExchApp.controller("ListController",
 
        /* imageurl: imageUpped */
       });
-    };
+          $scope.adding_item="";
+    $scope.add_item_form.$setUntouched;
+         };
 
-          console.log($scope.addItem);
+ 
+
+
+        // $scope.add_item_form.$setPristine();
+
 
  // postRef.set({
  //     'Bike': {category: 'Sporting Goods', 
