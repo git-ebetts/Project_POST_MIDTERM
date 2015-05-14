@@ -1,8 +1,8 @@
 stuffExchApp.controller("ListController", 
 
-	function($scope, $firebaseArray) {
+	function($scope, $firebaseArray, FIREBASE_URL) {
 
-	var ref = new Firebase("https://stuffapp.firebaseio.com/");
+	var ref = new Firebase(FIREBASE_URL);
 	var itemsArray = $firebaseArray(ref);
   
    itemsArray.$loaded().then(function(data) {

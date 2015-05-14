@@ -18,6 +18,7 @@ stuffExchApp.controller("LoginController",
 		Authentication.register($scope.user)
 		.then(function(user){
 	$location.path("/items");
+	Authentication.login($scope.user);
 		}).catch(function(error) {
 			$scope.message = error.message;
 		});
