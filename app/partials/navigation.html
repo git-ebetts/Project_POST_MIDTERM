@@ -9,13 +9,14 @@
 		</div>
 
 
+		<span ng-show="currentUser" ng-controller="StatusController">
+		<input div class="search"  type="text" ng-model="searchFor" placeholder="SEARCH"/>
 		
-		<input div class="search" ng-show="currentUser" type="text" ng-model="searchFor" placeholder="SEARCH"/>
-		
-		<div class="familyname" ng-show="currentUser">
-			<p>FAMILY NAME HERE</P>
-				<p class="bold">LOGOUT</P>
+		<div class="familyname">
+			<p>The {{ currentUser.group_name }} Group</P>
+				<a ng-href="#/" ng-click="logout()" style:text-decoration="none"><p class="bold">LOGOUT</p></a>
 				</div>
+			</span>
 				<div class="cl">
 				</div>
 			</div>

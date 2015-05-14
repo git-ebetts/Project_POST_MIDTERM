@@ -1,8 +1,19 @@
-stuffExchApp.factory("Authentication", function($firebase, 
-	$firebaseAuth, $routeParams, $location, FIREBASE_URL){
+
+stuffExchApp.factory("Authentication", function($firebaseAuth, $rootScope, $firebaseObject, $routeParams, $location, FIREBASE_URL){
 
 	var ref = new Firebase(FIREBASE_URL);
 	var auth = $firebaseAuth(ref);
+
+	auth.$onAuth(function(authUser) {
+		if (authUser) {
+		var user = $firebaseObject(ref.child('users').child(authUser.uid));
+			$rootScope.currentUser = user;
+		} else {
+			$rootScope.currentUser = '';
+		}
+		console.log($rootScope.currentUser.$id);
+
+	});
 
 	var myObject = {
 		login: function(user) {
@@ -13,6 +24,11 @@ stuffExchApp.factory("Authentication", function($firebase,
 			});
 
 		},
+
+			logout: function(user) {
+			return auth.$unauth();
+
+			},		
 
 		register: function(user) {
 			return auth.$createUser({
@@ -41,8 +57,9 @@ stuffExchApp.factory("Authentication", function($firebase,
 		}
 
 
-	};
+	}
 
 	return myObject;
 
 });
+

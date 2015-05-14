@@ -1,13 +1,13 @@
-		<section class="content" ng-controller="AddItemController">
+		<section class="content" ng-controller="ListController">
 
 
 
-			<article class="item group" ng-repeat="item in items | filter:searchFor">
+			<article class="item group" ng-repeat="item in items track by $index | filter:searchFor">
 				<figure class="picturebox">
 					<img ng-src="{{ item.imageurl }}">
 				</figure>
 
-				<div class="postedbybox">{{ item.first_name }}{{ item.last_name }} 
+				<div class="postedbybox">{{ user.first_name }}{{ user.last_name }} 
 					
 				</div>
 				<div class="contactbuttonm">
@@ -26,29 +26,30 @@
 					
 					<p class="formbold" id="bottom">Add To My Items</p>
 					
-					<form name="add_item_form" ng-submit="addItem(adding_item)">
+					<form name="add_item_form">
+				<!-- 	<form name="add_item_form" ng-submit="addItem(adding_item)"> -->
 						
-						<input type="text" class="additem" placeholder="First Name" ng-model="adding_item.first_name"/>
+<!-- 						<input type="text" class="additem" placeholder="First Name" ng-model="adding_item.first_name"/>
 
-						<input type="text" class="additem" placeholder="Last Name" ng-model="adding_item.last_name"/>
+						<input type="text" class="additem" placeholder="Last Name" ng-model="adding_item.last_name"/> -->
 
 
-						<div ng-init="adding_item.category = ''">
+						<div ng-init="adding_item.category = 'Choose a Category'">
 							
-							<select class="categoryselect">
-								<option>Choose A Category</option>
-								<option value="1">Appliances</option>
-								<option value="2">Furniture</option>
-								<option value="3">Household Goods</option>
-								<option value="4">Electronics</option>
-								<option value="5">Books/Movies/Music</option>
-								<option value="6">Sporting Goods</option>
-								<option value="7">Decorative Items</option>
-								<option value="8">Toys</option>
-								<option value="9">Childrens Clothing</option>
-								<option value="10">Womens Clothing</option>
-								<option value="11">Mens Clothing</option>
-								<option value="12">Miscellaneous</option>
+							<select class="categoryselect"  ng-model="adding_item.category">
+							<!-- 	<option value="">Choose A Category</option> -->
+								<option value="Appliances">Appliances</option>
+								<option value="Furniture">Furniture</option>
+								<option value="Household_Goods">Household Goods</option>
+								<option value="Electronics">Electronics</option>
+								<option value="Books/Movies/Music">Books/Movies/Music</option>
+								<option value="Sporting_Goods">Sporting Goods</option>
+								<option value="Decorative_Items">Decorative Items</option>
+								<option value="Toys">Toys</option>
+								<option value="Childrens_Clothing">Childrens Clothing</option>
+								<option value="Womens_Clothing">Womens Clothing</option>
+								<option value="Mens_Clothing">Mens Clothing</option>
+								<option value="Miscellaneous">Miscellaneous</option>
 							</select>
 						</div>
 
@@ -56,11 +57,12 @@
 
 						<input type="text" class="additem" placeholder="Image Filepath" ng-model="adding_item.imageurl"/>
 
-						<input class="additem" type="submit" value="Add Item"</>
+						<button class="additem" type="button" ng-click="addItem(adding_item)"> Add Item</button>
 
 						<a id="bottom"></a>
 
 					</form>
+
 				</div>
 			</div> 
 
