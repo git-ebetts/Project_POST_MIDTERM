@@ -3,8 +3,10 @@ stuffExchApp.service("filterService", [function($scope){
 
 	console.log('made it inside the filter service');
 
+return { activeFilters: {},
 
-		return { searchText: ''};
+	searchText: ''};
+
 
 
 // myobj
@@ -13,7 +15,7 @@ stuffExchApp.service("filterService", [function($scope){
 
 }]);
 
-
+		// console.log($scope.filterService);
 
 
 
@@ -28,3 +30,4 @@ stuffExchApp.service("filterService", [function($scope){
  //       searchText: ''
  //     };
  //   }]);
+

@@ -1,62 +1,101 @@
-stuffExchApp.controller("ListController", 
 
-	function($scope, $rootScope, $firebaseArray, $firebaseObject, FIREBASE_URL, filterService) {
 
-    $scope.items=[];
-    $scope.filterService = filterService;
-    console.log(filterService);
-   // console.log($scope.searchText);
-   //    console.log($scope.items);
+stuffExchApp.controller("ListController", function($scope, $rootScope, $firebaseArray, $firebaseObject, FIREBASE_URL, filterService){
 
-    var ref = new Firebase(FIREBASE_URL);
-    var postRef = ref.child('items');
-    $scope.items = $firebaseArray(postRef);
+  var ref = new Firebase(FIREBASE_URL);
 
-    console.log($scope.items);
-   console.log(postRef.key());
+  var itemsArray = $firebaseArray(ref);
 
-    postRef.on('value', function(snapshot){
-      console.log(snapshot.val());
-    }, function (errorObject) {
-      console.log("The read operation failed: " + errorObject.code);
-    });
+ itemsArray.$loaded().then(function(data) {
+   $scope.items = data;
+  console.log(data);
+})
+  
 
-        $scope.addItem = function(adding_item) {
+  $scope.addItem = function() {
+    itemsArray = $firebaseArray(ref);
 
-      var pushRef = new Firebase(FIREBASE_URL + '/items');
-
-      pushRef.push({
+    var itemData = {
         user: $rootScope.currentUser.$id,
         date: Firebase.ServerValue.TIMESTAMP,
-        category: adding_item.category,
-        description: adding_item.description,
-        imageurl: adding_item.imageurl
+        category: $scope.adding_item.category,
+        description: $scope.adding_item.description,
+        imageurl: $scope.adding_item.imageurl
+   };
+     // console.log(portfolioData);
 
-       /* imageurl: imageUpped */
-      });
-          $scope.adding_item="";
-    $scope.add_item_form.$setUntouched;
-         };
+     itemsArray.$add(itemData). then(function() {
+       $scope.adding_item="";
+       $scope.add_item_form.$setPristine();
 
-         //GO TO OTHER DATA TREE AND GRAB ARRAY
 
-var authUser = $rootScope.currentUser;
-console.log(authUser);
+     });
+     console.log(add_item_form);
 
-//grab groupname and add to previous push thing
-          var ref = new Firebase(FIREBASE_URL);
-    var postRef = ref.child('users'+'/authUser');
-    // $scope.items = $firebaseArray(postRef);
-    console.log($scope.items);
+   };
 
-    // console.log(postRef.key());
+ });
 
-    postRef.on('value', function(snapshot){
-      console.log(snapshot.val());
 
-       });
+// stuffExchApp.controller("ListController", 
 
-          });
+// 	function($scope, $rootScope, $firebaseArray, $firebaseObject, FIREBASE_URL, filterService) {
+
+//     $scope.items=[];
+//     $scope.filterService = filterService;
+//     console.log(filterService);
+//    // console.log($scope.searchText);
+//    //    console.log($scope.items);
+
+//     var ref = new Firebase(FIREBASE_URL);
+//     var postRef = ref.child('items');
+//     $scope.items = $firebaseArray(postRef);
+
+//     console.log($scope.items);
+//    console.log(postRef.key());
+
+//     postRef.on('value', function(snapshot){
+//       console.log(snapshot.val());
+//     }, function (errorObject) {
+//       console.log("The read operation failed: " + errorObject.code);
+//     });
+
+//         $scope.addItem = function(adding_item) {
+
+//       var pushRef = new Firebase(FIREBASE_URL + '/items');
+
+//       pushRef.push({
+//         user: $rootScope.currentUser.$id,
+//         date: Firebase.ServerValue.TIMESTAMP,
+//         category: adding_item.category,
+//         description: adding_item.description,
+//         imageurl: adding_item.imageurl
+
+//        /* imageurl: imageUpped */
+//       });
+//           $scope.adding_item="";
+//     $scope.add_item_form.$setUntouched;
+//          };
+
+//          //GO TO OTHER DATA TREE AND GRAB ARRAY
+
+// var authUser = $rootScope.currentUser;
+// console.log(authUser);
+
+// //grab groupname and add to previous push thing
+//           var ref = new Firebase(FIREBASE_URL);
+//     var postRef = ref.child('users'+'/authUser');
+//     // $scope.items = $firebaseArray(postRef);
+//     console.log($scope.items);
+
+//     // console.log(postRef.key());
+
+//     postRef.on('value', function(snapshot){
+//       console.log(snapshot.val());
+
+//        });
+
+//           });
 
 
         // $scope.add_item_form.$setPristine();
