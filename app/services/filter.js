@@ -1,11 +1,22 @@
  
-stuffExchApp.service("filterService", [function($scope){
 
-	console.log('made it inside the filter service');
 
-return { activeFilters: {},
 
-	searchText: ''};
+  angular.module('stuffExchApp')
+    .service('ShareData', function(){
+        return {
+            search: ""
+        }
+    })
+
+
+// stuffExchApp.service("filterService", [function($scope){
+
+// 	console.log('made it inside the filter service');
+
+// return { activeFilters: {},
+
+// 	searchText: ''};
 
 
 
@@ -13,7 +24,7 @@ return { activeFilters: {},
 
 
 
-}]);
+// }]);
 
 		// console.log($scope.filterService);
 

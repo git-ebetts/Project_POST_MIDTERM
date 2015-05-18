@@ -1,13 +1,20 @@
 
 
-stuffExchApp.controller("ListController", function($scope, $rootScope, $firebaseArray, $firebaseObject, FIREBASE_URL, filterService){
+stuffExchApp.controller("ListController", function($scope, $rootScope, $firebaseArray, $firebaseObject, FIREBASE_URL, ShareData){
 
-  var ref = new Firebase(FIREBASE_URL);
+  var ref = new Firebase(FIREBASE_URL + '/items');
+  // var postRef = ref.child('items');
 
   var itemsArray = $firebaseArray(ref);
+  $scope.items = itemsArray;
+
+  //     var ref = new Firebase(FIREBASE_URL);
+//     var postRef = ref.child('items');
+//     $scope.items = $firebaseArray(postRef);
 
  itemsArray.$loaded().then(function(data) {
    $scope.items = data;
+           $scope.myData2 = ShareData;
   console.log(data);
 })
   
@@ -32,9 +39,18 @@ stuffExchApp.controller("ListController", function($scope, $rootScope, $firebase
      });
      console.log(add_item_form);
 
-   };
 
- });
+        $scope.items = [];
+
+        console.log($scope.myData1);
+         console.log($scope.items)
+
+    };
+      })
+
+   
+
+
 
 
 // stuffExchApp.controller("ListController", 
@@ -99,7 +115,9 @@ stuffExchApp.controller("ListController", function($scope, $rootScope, $firebase
 
 
         // $scope.add_item_form.$setPristine();
-
+ //    var ref = new Firebase(FIREBASE_URL);
+ //    var postRef = ref.child('items');
+ //    $scope.items = $firebaseArray(postRef);
 
  // postRef.set({
  //     'Bike': {category: 'Sporting Goods', 
@@ -118,10 +136,10 @@ stuffExchApp.controller("ListController", function($scope, $rootScope, $firebase
 
  //      });
 
-    // $scope.addItem = function( new_item ) {
-    //   $scope.items.push( new_item );
-    //   $scope.adding_item = {};
-    // };
+ //    $scope.addItem = function( new_item ) {
+ //      $scope.items.push( new_item );
+ //      $scope.adding_item = {};
+ //    };
 
   // });
 
