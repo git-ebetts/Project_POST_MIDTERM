@@ -13,11 +13,7 @@ stuffExchApp.factory("Authentication", function($firebaseAuth, $rootScope, $fire
 		}
 		console.log($rootScope.currentUser.$id);
 
-		var authfirstname = $firebaseObject(ref.child('users').child(authUser.uid).firstname);
-		var authlastname = $firebaseObject(ref.child('users').child(authUser.uid).lastname);
-		var authgrpname = $firebaseObject(ref.child('users').child(authUser.uid).group_name);
 
-		console.log($scope.authlastname);
 
 	});
 
@@ -57,7 +53,8 @@ stuffExchApp.factory("Authentication", function($firebaseAuth, $rootScope, $fire
 			});
 			// firebaseUsers.$set(regUser.uid, userInfo);
 			console.log(postRef);
-			console.log(regUser)
+			console.log(regUser);
+			console.log($scope.group_name);
 
 			});
 		}

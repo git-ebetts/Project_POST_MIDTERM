@@ -1,14 +1,19 @@
 stuffExchApp.controller("ListController", 
 
-	function($scope, $rootScope, $firebaseArray, $firebaseObject, FIREBASE_URL) {
+	function($scope, $rootScope, $firebaseArray, $firebaseObject, FIREBASE_URL, filterService) {
 
     $scope.items=[];
+    $scope.filterService = filterService;
+    console.log(filterService);
+   // console.log($scope.searchText);
+   //    console.log($scope.items);
 
     var ref = new Firebase(FIREBASE_URL);
     var postRef = ref.child('items');
     $scope.items = $firebaseArray(postRef);
 
-    console.log(postRef.key());
+    console.log($scope.items);
+   console.log(postRef.key());
 
     postRef.on('value', function(snapshot){
       console.log(snapshot.val());
@@ -33,7 +38,25 @@ stuffExchApp.controller("ListController",
     $scope.add_item_form.$setUntouched;
          };
 
- 
+         //GO TO OTHER DATA TREE AND GRAB ARRAY
+
+var authUser = $rootScope.currentUser;
+console.log(authUser);
+
+//grab groupname and add to previous push thing
+          var ref = new Firebase(FIREBASE_URL);
+    var postRef = ref.child('users'+'/authUser');
+    // $scope.items = $firebaseArray(postRef);
+    console.log($scope.items);
+
+    // console.log(postRef.key());
+
+    postRef.on('value', function(snapshot){
+      console.log(snapshot.val());
+
+       });
+
+          });
 
 
         // $scope.add_item_form.$setPristine();
@@ -61,7 +84,7 @@ stuffExchApp.controller("ListController",
     //   $scope.adding_item = {};
     // };
 
-  });
+  // });
 
 // 	var ref = new Firebase(FIREBASE_URL);
 // 	var itemsArray = $firebaseArray(ref);

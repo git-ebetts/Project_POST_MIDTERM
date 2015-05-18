@@ -2,7 +2,7 @@
 
 
 
-			<article class="item group" ng-repeat="item in items track by $index | filter:searchFor">
+			<article class="item group" ng-repeat="item in items | filter:filterService.searchText track by $index">
 				<figure class="picturebox">
 					<img ng-src="{{ item.imageurl }}">
 				</figure>
