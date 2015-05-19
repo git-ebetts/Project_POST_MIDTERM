@@ -15,6 +15,7 @@ stuffExchApp.controller("ListController", function($scope, $rootScope, $firebase
  itemsArray.$loaded().then(function(data) {
    $scope.items = data;
            $scope.myData2 = ShareData;
+                   // $scope.items = [];
   console.log(data);
 })
   
@@ -39,8 +40,27 @@ stuffExchApp.controller("ListController", function($scope, $rootScope, $firebase
      });
      console.log(add_item_form);
 
+var authUser = $rootScope.currentUser;
+console.log(authUser);
 
-        $scope.items = [];
+//GET ARRAY DATA FROM USER TREE
+  var ref = new Firebase(FIREBASE_URL + '/users' + '/authUser');
+  var userArray = $firebaseArray(ref);
+  $scope.user = userArray;
+
+var userData = {
+    email: $scope.adding_item.email,
+    firstname: $scope.adding_item.firstname,
+    group_name: $scope.adding_item.lastname,
+    lastname: $scope.adding_item.lastname;
+};
+
+//FIGURE OUT HOW TO ADD THIS DATA TO SPECIFIC ELEMENT IN ITEM TREE
+     userArray.$add(userData). then(function() {
+       $scope.adding_item="";
+       $scope.add_item_form.$setPristine();
+
+
 
         console.log($scope.myData1);
          console.log($scope.items)
@@ -55,7 +75,7 @@ stuffExchApp.controller("ListController", function($scope, $rootScope, $firebase
 
 // stuffExchApp.controller("ListController", 
 
-// 	function($scope, $rootScope, $firebaseArray, $firebaseObject, FIREBASE_URL, filterService) {
+//  function($scope, $rootScope, $firebaseArray, $firebaseObject, FIREBASE_URL, filterService) {
 
 //     $scope.items=[];
 //     $scope.filterService = filterService;
@@ -143,12 +163,12 @@ stuffExchApp.controller("ListController", function($scope, $rootScope, $firebase
 
   // });
 
-// 	var ref = new Firebase(FIREBASE_URL);
-// 	var itemsArray = $firebaseArray(ref);
+//  var ref = new Firebase(FIREBASE_URL);
+//  var itemsArray = $firebaseArray(ref);
   
 //    itemsArray.$loaded().then(function(data) {
 //    $scope.items = data;
-// 	//console.log(data);
+//  //console.log(data);
 // })
 
 //      $scope.addItem = function() {
