@@ -15,7 +15,7 @@ stuffExchApp.controller("ListController", function($scope, $rootScope, $firebase
  itemsArray.$loaded().then(function(data) {
    $scope.items = data;
            $scope.myData2 = ShareData;
-                   // $scope.items = [];
+                    $scope.items = [];
   console.log(data);
 })
   
@@ -30,14 +30,18 @@ stuffExchApp.controller("ListController", function($scope, $rootScope, $firebase
         description: $scope.adding_item.description,
         imageurl: $scope.adding_item.imageurl
    };
-     // console.log(portfolioData);
+      // console.log(itemData);
 
-     itemsArray.$add(itemData). then(function() {
-       $scope.adding_item="";
-       $scope.add_item_form.$setPristine();
-
-
+     // itemsArray.$add(itemData). then(function() {
+       var newItemRef = itemsArray.push(itemData);
+       // var itemID = newItemRef.key();
+         console.log(itemsArray.$id);
+       //     . then(function() {
+       // $scope.adding_item="";
+       // $scope.add_item_form.$setPristine();
      });
+     });
+
      console.log(add_item_form);
 
 var authUser = $rootScope.currentUser;
@@ -56,6 +60,18 @@ var userData = {
 };
 
 //FIGURE OUT HOW TO ADD THIS DATA TO SPECIFIC ELEMENT IN ITEM TREE
+//NEED TO FIGURE OUT ITEM ID NUMBER, SO NEED TO CAPTURE RETURN ID
+  var ref = new Firebase(FIREBASE_URL + '/items');
+  // var postRef = ref.child('items');
+
+  var itemsArray = $firebaseArray(ref);
+  $scope.items = itemsArray;
+
+
+
+
+
+
      userArray.$add(userData). then(function() {
        $scope.adding_item="";
        $scope.add_item_form.$setPristine();
