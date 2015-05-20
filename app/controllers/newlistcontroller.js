@@ -5,44 +5,99 @@ stuffExchApp.controller("ListController",
     $scope.items=[];
 
     var ref = new Firebase(FIREBASE_URL);
-    var postRef = ref.child('items');
-    $scope.items = $firebaseArray(postRef);
+    var itempostRef = ref.child('items');
+    $scope.items = $firebaseArray(itempostRef);
 
-    console.log(postRef.key());
+    console.log(itempostRef.key());
 
-    postRef.on('value', function(snapshot){
+    itempostRef.on('value', function(snapshot){
       console.log(snapshot.val());
     }, function (errorObject) {
       console.log("The read operation failed: " + errorObject.code);
     });
 
-  $scope.items.$loaded().then(function(data) {
-   $scope.items = data;
-           $scope.myData2 = ShareData;
+    $scope.items.$loaded().then(function(data) {
+     $scope.items = data;
+     $scope.myData2 = ShareData;
            // $scope.items = [];
 
 
-        $scope.addItem = function(adding_item) {
+           $scope.addItem = function(adding_item) {
 
-      var newPostRef = new Firebase(FIREBASE_URL + '/items');
+            var newPostRef = new Firebase(FIREBASE_URL + '/items');
 
-      var newPostRef = postRef.push({
-        user: $rootScope.currentUser.$id,
-        date: Firebase.ServerValue.TIMESTAMP,
-        category: adding_item.category,
-        description: adding_item.description,
-        imageurl: adding_item.imageurl
+            var newitemPostRef = itempostRef.push({
+              user: $rootScope.currentUser.$id,
+              date: Firebase.ServerValue.TIMESTAMP,
+              category: adding_item.category,
+              description: adding_item.description,
+              imageurl: adding_item.imageurl
 
-       /* imageurl: imageUpped */
-      });
+              /* imageurl: imageUpped */
+            });
 
-      var postID = newPostRef.key();
-      console.log(postID);
-          $scope.adding_item="";
-    $scope.add_item_form.$setUntouched;
-         };
+            var postID = newitemPostRef.key();
+            console.log(postID);
 
- 
+itempostRef.on('value', function() {
+var authUser = $rootScope.currentUser;
+authUser.$loaded().then(function() {
+console.log(authUser);
+console.log(authUser.email);
+var email = (authUser.email);
+console.log(authUser.firstname);
+var firstname = authUser.firstname;
+console.log(authUser.group_name);
+var group_name = authUser.group_name;
+console.log(authUser.lastname);
+var lastname = authUser.lastname});
+
+ var updatePostRef = new Firebase(FIREBASE_URL + '/items/' + 'postID');
+ var updateitemPostRef = updatePostRef.update({
+              email: adding_item.email,
+              firstname: adding_item.firstname,
+              group_name: adding_item.group_name,
+              lastname: adding_item.lastname
+
+              /* imageurl: imageUpped */
+            });
+ });
+
+
+
+
+
+
+
+
+
+//    var ref = new Firebase(FIREBASE_URL);
+//     var userpostRef = ref.child('users');
+//     $scope.users = $firebaseArray(userpostRef);
+
+// var $user = $rootScope.currentUser.$id;
+// console.log($user);
+// var userIdRef = new Firebase(FIREBASE_URL)
+// var userIdpost =userIdRef.child('/users/').child('/$user');
+// var userIdSnapshot;
+// userIdRef.once('value', function(dataSnapshot) {
+//   // store dataSnapshot for use in below examples.
+//   userIdSnapshot = dataSnapshot;
+//  console.log(userIdSnapshot.val()) 
+// }); 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         // $scope.add_item_form.$setPristine();
@@ -60,7 +115,7 @@ stuffExchApp.controller("ListController",
  //      'Lamp': {category: 'Furniture', 
  //      description: 'Table lamp. Shade slightly torm at top but otherwise serviceable.', 
  //      imageurl: 'images/lamp.png' }
-      
+
 
 
  //      });
@@ -70,11 +125,11 @@ stuffExchApp.controller("ListController",
     //   $scope.adding_item = {};
     // };
 
-  });
+  };
 
 //  var ref = new Firebase(FIREBASE_URL);
 //  var itemsArray = $firebaseArray(ref);
-  
+
 //    itemsArray.$loaded().then(function(data) {
 //    $scope.items = data;
 //  //console.log(data);
@@ -100,7 +155,6 @@ stuffExchApp.controller("ListController",
 
 //      });
 //      console.log(add_item_form);
+});
 
-//    };
-
- });
+});
