@@ -1,159 +1,52 @@
+stuffExchApp.controller("ListController", 
 
+  function($scope, $rootScope, $firebaseArray, $firebaseObject, FIREBASE_URL, ShareData) {
 
-stuffExchApp.controller("ListController", function($scope, $rootScope, $firebaseArray, $firebaseObject, FIREBASE_URL, ShareData){
+    $scope.items=[];
 
-  var ref = new Firebase(FIREBASE_URL + '/items');
-  // var postRef = ref.child('items');
+    var ref = new Firebase(FIREBASE_URL);
+    var postRef = ref.child('items');
+    $scope.items = $firebaseArray(postRef);
 
-  var itemsArray = $firebaseArray(ref);
-  $scope.items = itemsArray;
+    console.log(postRef.key());
 
-  //     var ref = new Firebase(FIREBASE_URL);
-//     var postRef = ref.child('items');
-//     $scope.items = $firebaseArray(postRef);
+    postRef.on('value', function(snapshot){
+      console.log(snapshot.val());
+    }, function (errorObject) {
+      console.log("The read operation failed: " + errorObject.code);
+    });
 
- itemsArray.$loaded().then(function(data) {
+  $scope.items.$loaded().then(function(data) {
    $scope.items = data;
            $scope.myData2 = ShareData;
-                    $scope.items = [];
-  console.log(data);
-})
-  
+           // $scope.items = [];
 
-  $scope.addItem = function() {
-    itemsArray = $firebaseArray(ref);
 
-    var itemData = {
+        $scope.addItem = function(adding_item) {
+
+      var newPostRef = new Firebase(FIREBASE_URL + '/items');
+
+      var newPostRef = postRef.push({
         user: $rootScope.currentUser.$id,
         date: Firebase.ServerValue.TIMESTAMP,
-        category: $scope.adding_item.category,
-        description: $scope.adding_item.description,
-        imageurl: $scope.adding_item.imageurl
-   };
-      // console.log(itemData);
+        category: adding_item.category,
+        description: adding_item.description,
+        imageurl: adding_item.imageurl
 
-     // itemsArray.$add(itemData). then(function() {
-       var newItemRef = itemsArray.push(itemData);
-       // var itemID = newItemRef.key();
-         console.log(itemsArray.$id);
-       //     . then(function() {
-       // $scope.adding_item="";
-       // $scope.add_item_form.$setPristine();
-     });
-     });
+       /* imageurl: imageUpped */
+      });
 
-     console.log(add_item_form);
+      var postID = newPostRef.key();
+      console.log(postID);
+          $scope.adding_item="";
+    $scope.add_item_form.$setUntouched;
+         };
 
-var authUser = $rootScope.currentUser;
-console.log(authUser);
-
-//GET ARRAY DATA FROM USER TREE
-  var ref = new Firebase(FIREBASE_URL + '/users' + '/authUser');
-  var userArray = $firebaseArray(ref);
-  $scope.user = userArray;
-
-var userData = {
-    email: $scope.adding_item.email,
-    firstname: $scope.adding_item.firstname,
-    group_name: $scope.adding_item.lastname,
-    lastname: $scope.adding_item.lastname;
-};
-
-//FIGURE OUT HOW TO ADD THIS DATA TO SPECIFIC ELEMENT IN ITEM TREE
-//NEED TO FIGURE OUT ITEM ID NUMBER, SO NEED TO CAPTURE RETURN ID
-  var ref = new Firebase(FIREBASE_URL + '/items');
-  // var postRef = ref.child('items');
-
-  var itemsArray = $firebaseArray(ref);
-  $scope.items = itemsArray;
-
-
-
-
-
-
-     userArray.$add(userData). then(function() {
-       $scope.adding_item="";
-       $scope.add_item_form.$setPristine();
-
-
-
-        console.log($scope.myData1);
-         console.log($scope.items)
-
-    };
-      })
-
-   
-
-
-
-
-// stuffExchApp.controller("ListController", 
-
-//  function($scope, $rootScope, $firebaseArray, $firebaseObject, FIREBASE_URL, filterService) {
-
-//     $scope.items=[];
-//     $scope.filterService = filterService;
-//     console.log(filterService);
-//    // console.log($scope.searchText);
-//    //    console.log($scope.items);
-
-//     var ref = new Firebase(FIREBASE_URL);
-//     var postRef = ref.child('items');
-//     $scope.items = $firebaseArray(postRef);
-
-//     console.log($scope.items);
-//    console.log(postRef.key());
-
-//     postRef.on('value', function(snapshot){
-//       console.log(snapshot.val());
-//     }, function (errorObject) {
-//       console.log("The read operation failed: " + errorObject.code);
-//     });
-
-//         $scope.addItem = function(adding_item) {
-
-//       var pushRef = new Firebase(FIREBASE_URL + '/items');
-
-//       pushRef.push({
-//         user: $rootScope.currentUser.$id,
-//         date: Firebase.ServerValue.TIMESTAMP,
-//         category: adding_item.category,
-//         description: adding_item.description,
-//         imageurl: adding_item.imageurl
-
-//        /* imageurl: imageUpped */
-//       });
-//           $scope.adding_item="";
-//     $scope.add_item_form.$setUntouched;
-//          };
-
-//          //GO TO OTHER DATA TREE AND GRAB ARRAY
-
-// var authUser = $rootScope.currentUser;
-// console.log(authUser);
-
-// //grab groupname and add to previous push thing
-//           var ref = new Firebase(FIREBASE_URL);
-//     var postRef = ref.child('users'+'/authUser');
-//     // $scope.items = $firebaseArray(postRef);
-//     console.log($scope.items);
-
-//     // console.log(postRef.key());
-
-//     postRef.on('value', function(snapshot){
-//       console.log(snapshot.val());
-
-//        });
-
-//           });
+ 
 
 
         // $scope.add_item_form.$setPristine();
- //    var ref = new Firebase(FIREBASE_URL);
- //    var postRef = ref.child('items');
- //    $scope.items = $firebaseArray(postRef);
+
 
  // postRef.set({
  //     'Bike': {category: 'Sporting Goods', 
@@ -172,12 +65,12 @@ var userData = {
 
  //      });
 
- //    $scope.addItem = function( new_item ) {
- //      $scope.items.push( new_item );
- //      $scope.adding_item = {};
- //    };
+    // $scope.addItem = function( new_item ) {
+    //   $scope.items.push( new_item );
+    //   $scope.adding_item = {};
+    // };
 
-  // });
+  });
 
 //  var ref = new Firebase(FIREBASE_URL);
 //  var itemsArray = $firebaseArray(ref);
@@ -210,4 +103,4 @@ var userData = {
 
 //    };
 
-//  });
+ });
