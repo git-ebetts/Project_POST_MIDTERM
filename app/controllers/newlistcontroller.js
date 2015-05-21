@@ -25,43 +25,99 @@ stuffExchApp.controller("ListController",
            $scope.addItem = function(adding_item) {
 
             var newPostRef = new Firebase(FIREBASE_URL + '/items');
+            $scope.items = []; 
 
-            var newitemPostRef = itempostRef.push({
-              user: $rootScope.currentUser.$id,
-              date: Firebase.ServerValue.TIMESTAMP,
-              category: adding_item.category,
-              description: adding_item.description,
-              imageurl: adding_item.imageurl
+ //ADDING USER DETAILS TO ITEM
+ var authUser = $rootScope.currentUser;
+ authUser.$loaded().then(function() {
+  console.log(authUser);
+  console.log(authUser.email);
+  $scope.email = authUser.email;
+  console.log(authUser.firstname);
+  $scope.firstname = authUser.firstname;
+  console.log(authUser.group_name);
+  $scope.group_name = authUser.group_name;
+  console.log(authUser.lastname);
+  $scope.lastname = authUser.lastname;
 
-              /* imageurl: imageUpped */
-            });
+  //ADDING NEW ITEMS TO DBASE
 
-            var postID = newitemPostRef.key();
-            console.log(postID);
+  var newitemPostRef = itempostRef.push({
+    user: $rootScope.currentUser.$id,
+    email: authUser.email,
+    group_name: authUser.group_name,
+    firstname: authUser.firstname,
+    lastname: authUser.lastname,
+    date: Firebase.ServerValue.TIMESTAMP,
+    category: adding_item.category,
+    description: adding_item.description,
+    imageurl: adding_item.imageurl
 
-itempostRef.on('value', function() {
-var authUser = $rootScope.currentUser;
-authUser.$loaded().then(function() {
-console.log(authUser);
-console.log(authUser.email);
-var email = (authUser.email);
-console.log(authUser.firstname);
-var firstname = authUser.firstname;
-console.log(authUser.group_name);
-var group_name = authUser.group_name;
-console.log(authUser.lastname);
-var lastname = authUser.lastname});
+    /* imageurl: imageUpped */
+  });
+  });
+    $scope.adding_item = "";
+    $scope.add_item_form.$setPristine();
+    console.log($scope.adding_item);
+};
+}
+);
+});
 
- var updatePostRef = new Firebase(FIREBASE_URL + '/items/' + 'postID');
- var updateitemPostRef = updatePostRef.update({
-              email: adding_item.email,
-              firstname: adding_item.firstname,
-              group_name: adding_item.group_name,
-              lastname: adding_item.lastname
 
-              /* imageurl: imageUpped */
-            });
- });
+
+  //   $scope.items = []; 
+ //  $scope.authUser ="";
+ //       $scope.adding_item = "";
+ //       $scope.add_item_form = "";
+
+ //       $scope.add_item_form.$setPristine();
+ // console.log($scope.adding_item);
+
+
+
+
+     // $scope.reset = function() {
+     //  $scope.adding_item = "";
+     //  $scope.add_item_form.$setPristine();
+     //  console.log($scope.adding_item);
+
+
+
+
+
+
+
+
+
+
+
+
+//             var postID = newitemPostRef.key();
+//             console.log(postID);
+
+// itempostRef.on('value', function() {
+// var authUser = $rootScope.currentUser;
+// authUser.$loaded().then(function() {
+// console.log(authUser);
+// console.log(authUser.email);
+// var email = (authUser.email);
+// console.log(authUser.firstname);
+// var firstname = authUser.firstname;
+// console.log(authUser.group_name);
+// var group_name = authUser.group_name;
+// console.log(authUser.lastname);
+// var lastname = authUser.lastname});
+
+//  var updatePostRef = new Firebase(FIREBASE_URL + '/items/' + 'postID');
+//  var updateitemPostRef = updatePostRef.update({
+//               email: adding_item.email,
+//               firstname: adding_item.firstname,
+//               group_name: adding_item.group_name,
+//               lastname: adding_item.lastname
+
+/* imageurl: imageUpped */
+
 
 
 
@@ -125,7 +181,7 @@ var lastname = authUser.lastname});
     //   $scope.adding_item = {};
     // };
 
-  };
+
 
 //  var ref = new Firebase(FIREBASE_URL);
 //  var itemsArray = $firebaseArray(ref);
@@ -155,6 +211,3 @@ var lastname = authUser.lastname});
 
 //      });
 //      console.log(add_item_form);
-});
-
-});

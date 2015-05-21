@@ -54,7 +54,7 @@ stuffExchApp.factory("Authentication", function($firebaseAuth, $rootScope, $fire
 			// firebaseUsers.$set(regUser.uid, userInfo);
 			console.log(postRef);
 			console.log(regUser);
-			console.log($scope.group_name);
+
 
 			});
 		}
