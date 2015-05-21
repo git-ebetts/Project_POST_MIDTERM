@@ -96,7 +96,7 @@ filepicker.pick(
     $scope.newitemPostRef = "";
     $scope.adding_item = "";
     $scope.add_item_form.$setPristine();
-    adding_item = 0;
+    // adding_item = 0;
     console.log(adding_item);
 };
 }
