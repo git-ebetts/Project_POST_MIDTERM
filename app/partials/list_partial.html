@@ -1,77 +1,70 @@
-		<section class="content" ng-controller="ListController">
+<section class="content" ng-controller="ListController">
 
+	<article class="item group" ng-repeat="item in items | filter:currentUser.group_name | filter:myData2.search">
+		<figure class="picturebox">
+		<img ng-src="{{ item.imageurl }}">
+		</figure>
 
+		<div class="postedbybox">Offered By: {{ item.firstname }} {{ item.lastname }} 
 
-			<article class="item group" ng-repeat="item in items | filter:searchFor:currentUser | filter:myData2.search">
-				<figure class="picturebox">
-					<img ng-src="{{ item.imageurl }}">
-				</figure>
-
-				<div class="postedbybox">{{ item.firstname }} {{ item.lastname }} 
-					
-				</div>
-				<div class="contactbuttonm">
-					<img src="images/button1.svg">
-				</div>
-				<div class="descriptionbox"><p class="description">{{ item.description }}</p>
-				<div class="descriptionbox" ng-hide="currentUser"><p class="description">{{ item.user }}</p>
+		</div>
+		<div class="contactbuttonm">
+		<a href="mailto:{{ item.email }}"><img src="images/contact.svg"></a>
+		</div>
+		<div class="descriptionbox"><p class="description">{{ item.description }}</p>
+			<div class="descriptionbox" ng-hide="currentUser"><p class="description">{{ item.user }}</p>
 
 				<div class="descriptionbox"><p class="description">{{ item.group_name }}</p>
-
-
-
-					
 				</div>
 				<div class="cl">
-
 				</div>
 			</article>
 			<!--FORM CONTAINER MOBILE -->
 			<div class="formcontainerm">   
 				<div class="subcontainer">
-					
+
 					<p class="formbold" id="bottom">Add To My Items</p>
-					
+
 					<form name="add_item_form" novalidate>
-				<!-- 	<form name="add_item_form" ng-submit="addItem(adding_item)"> -->
-						
-<!-- 						<input type="text" class="additem" placeholder="First Name" ng-model="adding_item.first_name"/>
+						<!-- 	<form name="add_item_form" ng-submit="addItem(adding_item)"> -->
 
-						<input type="text" class="additem" placeholder="Last Name" ng-model="adding_item.last_name"/> -->
+<!-- <input type="text" class="additem" placeholder="First Name" ng-model="adding_item.first_name"/>
 
-
-						<div ng-init="adding_item.category = 'Choose a Category'">
-							
-							<select class="categoryselect"  ng-model="adding_item.category">
-							<!-- 	<option value="">Choose A Category</option> -->
-								<option value="Appliances">Appliances</option>
-								<option value="Furniture">Furniture</option>
-								<option value="Household_Goods">Household Goods</option>
-								<option value="Electronics">Electronics</option>
-								<option value="Books/Movies/Music">Books/Movies/Music</option>
-								<option value="Sporting_Goods">Sporting Goods</option>
-								<option value="Decorative_Items">Decorative Items</option>
-								<option value="Toys">Toys</option>
-								<option value="Childrens_Clothing">Childrens Clothing</option>
-								<option value="Womens_Clothing">Womens Clothing</option>
-								<option value="Mens_Clothing">Mens Clothing</option>
-								<option value="Miscellaneous">Miscellaneous</option>
-							</select>
-						</div>
-
-						<textarea class="additem" placeholder="Description" placeholder style="padding-top: 10px" maxlength="65" style="width:238px" line-height="14px" rows="2" ng-model="adding_item.description" ></textarea>
-
-						<input type="text" class="additem" placeholder="Image Filepath" ng-model="adding_item.imageurl"/>
-
-						<button class="additem" type="button" ng-click="addItem(adding_item)"> Add Item</button>
-
-						<a id="bottom"></a>
-
-					</form>
-
-				</div>
-			</div> 
+	<input type="text" class="additem" placeholder="Last Name" ng-model="adding_item.last_name"/> -->
 
 
+	<div ng-init="adding_item.category = 'Choose a Category'">
 
-		</section>
+		<select class="categoryselect"  ng-model="adding_item.category">
+			<!-- 	<option value="">Choose A Category</option> -->
+			<option value="Appliances">Appliances</option>
+			<option value="Furniture">Furniture</option>
+			<option value="Household_Goods">Household Goods</option>
+			<option value="Electronics">Electronics</option>
+			<option value="Books/Movies/Music">Books/Movies/Music</option>
+			<option value="Sporting_Goods">Sporting Goods</option>
+			<option value="Decorative_Items">Decorative Items</option>
+			<option value="Toys">Toys</option>
+			<option value="Childrens_Clothing">Childrens Clothing</option>
+			<option value="Womens_Clothing">Womens Clothing</option>
+			<option value="Mens_Clothing">Mens Clothing</option>
+			<option value="Miscellaneous">Miscellaneous</option>
+		</select>
+	</div>
+
+	<textarea class="additem" placeholder="Description" placeholder style="padding-top: 10px" maxlength="65" style="width:238px" line-height="14px" rows="2" ng-model="adding_item.description" ></textarea>
+
+	<input type="text" class="additem" placeholder="Image Filepath" ng-model="adding_item.imageurl"/>
+
+	<button class="additem" type="button" ng-click="addItem(adding_item)"> Add Item</button>
+
+	<a id="bottom"></a>
+
+</form>
+
+</div>
+</div> 
+
+
+
+</section>
