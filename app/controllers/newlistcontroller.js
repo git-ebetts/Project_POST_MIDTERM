@@ -56,13 +56,25 @@ stuffExchApp.controller("ListController",
     /* imageurl: imageUpped */
   });
   });
+    adding_item = "";
     $scope.adding_item = "";
     $scope.add_item_form.$setPristine();
-    console.log($scope.adding_item);
+    console.log(adding_item);
 };
 }
 );
 });
+
+ // var authUser = $rootScope.currentUser.$id;
+
+
+
+// if (item.group_name === authUser.group_name)
+//   "filter:searchFor:authUser.group_name"
+// else 
+//    "filter:searchFor:user"
+
+
 
 
 

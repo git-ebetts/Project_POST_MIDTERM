@@ -2,7 +2,7 @@
 
 
 
-			<article class="item group" ng-repeat="item in items | filter:myData2.search">
+			<article class="item group" ng-repeat="item in items | filter:searchFor:currentUser | filter:myData2.search">
 				<figure class="picturebox">
 					<img ng-src="{{ item.imageurl }}">
 				</figure>
@@ -14,6 +14,12 @@
 					<img src="images/button1.svg">
 				</div>
 				<div class="descriptionbox"><p class="description">{{ item.description }}</p>
+				<div class="descriptionbox" ng-hide="currentUser"><p class="description">{{ item.user }}</p>
+
+				<div class="descriptionbox"><p class="description">{{ item.group_name }}</p>
+
+
+
 					
 				</div>
 				<div class="cl">
@@ -59,7 +65,7 @@
 
 						<button class="additem" type="button" ng-click="addItem(adding_item)"> Add Item</button>
 
-						<!-- <a id="bottom"></a> -->
+						<a id="bottom"></a>
 
 					</form>
 

@@ -12,7 +12,8 @@ stuffExchApp.factory("Authentication", function($firebaseAuth, $rootScope, $fire
 			$rootScope.currentUser = '';
 		}
 		console.log($rootScope.currentUser.$id);
-
+ var authUser = ($rootScope.currentUser.$id);
+console.log(authUser);
 
 
 	});

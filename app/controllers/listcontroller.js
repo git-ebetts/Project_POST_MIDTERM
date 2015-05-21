@@ -13,12 +13,12 @@ function AddItemController( $scope, $location, $anchorScroll){
 	// 	$scope.items.push( new_item );
 	// 	$scope.adding_item = {};
 	// };
-	// $scope.gotoBottom = function (){
+	$scope.gotoBottom = function (){
 
-	// 	$location.hash('bottom');
+		$location.hash('bottom');
 
-	// 	$anchorScroll();
-	// }
+		$anchorScroll();
+	}
 };
 
 
