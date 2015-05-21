@@ -153,7 +153,7 @@ body {
   width: 93%;
   margin-right: 15px;
   margin-left: 15px;
-  margin-top: 15px;
+  margin-top: 30px;
   margin-bottom: 255px;
   display: inline-block;
   background-color: none;
@@ -163,8 +163,8 @@ body {
 .additem {
   height: 28px;
   width: 238px;
-  padding-left: 10px;
-  padding-top: 2px;
+  padding-left: 5px;
+  padding-top: 5px;
   display: inline-block;
   border-style: solid;
   border-width: 1px;

@@ -16,6 +16,42 @@ stuffExchApp.controller("ListController",
       console.log("The read operation failed: " + errorObject.code);
     });
 
+
+// API Key: AyC5R9yFSN2CXrba3Kki1z
+//{"url":"https://www.filepicker.io/api/file/bo79ExERKmz6gv8kOPNU",
+//"filename":"Pierre_LeGrand.jpg",
+//"mimetype":"image/jpeg",
+//"size":168177,
+//"isWriteable":true}
+
+var imageUpped;
+
+$scope.addImage = function( new_image ){
+
+filepicker.setKey("AyC5R9yFSN2CXrba3Kki1z");
+
+filepicker.pick(
+  {
+    mimetypes: ['image/*', 'text/plain'],
+    container: 'window',
+    services:['COMPUTER'],
+  },
+  function(Blob){
+    imageUpped = Blob.url;
+    console.log(imageUpped);
+  },
+  function(FPError){
+    console.log(FPError.toString());
+  }
+);
+}
+
+
+
+
+
+
+
     $scope.items.$loaded().then(function(data) {
      $scope.items = data;
      $scope.myData2 = ShareData;
@@ -51,14 +87,16 @@ stuffExchApp.controller("ListController",
     date: Firebase.ServerValue.TIMESTAMP,
     category: adding_item.category,
     description: adding_item.description,
-    imageurl: adding_item.imageurl
+    imageurl: imageUpped
+    
+  });
+  console.log(newitemPostRef)
+  });
 
-    /* imageurl: imageUpped */
-  });
-  });
-    adding_item = "";
+    $scope.newitemPostRef = "";
     $scope.adding_item = "";
     $scope.add_item_form.$setPristine();
+    adding_item = 0;
     console.log(adding_item);
 };
 }

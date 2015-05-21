@@ -1,4 +1,4 @@
-<section class="content" ng-controller="ListController">
+<section class="content" ng-controller="ListController" ng-cloak>
 
 	<article class="item group" ng-repeat="item in items | filter:currentUser.group_name | filter:myData2.search">
 		<figure class="picturebox">
@@ -54,7 +54,11 @@
 
 	<textarea class="additem" placeholder="Description" placeholder style="padding-top: 10px" maxlength="65" style="width:238px" line-height="14px" rows="2" ng-model="adding_item.description" ></textarea>
 
-	<input type="text" class="additem" placeholder="Image Filepath" ng-model="adding_item.imageurl"/>
+<!-- 	<input type="filepicker" data-fp-apikey="AyC5R9yFSN2CXrba3Kki1z" data-fp-mimetypes="image/*" data-fp-container="modal" data-fp-services="COMPUTER,IMAGE_SEARCH,URL,WEBCAM" onchange="alert(event.fpfile.url)"> -->
+
+	<input type="file" class="additem" required="true" id="file-upload" ng-click="addImage()" />
+
+<!-- 	<input type="text" class="additem" placeholder="Image Filepath" ng-model="adding_item.imageurl"/> -->
 
 	<button class="additem" type="button" ng-click="addItem(adding_item)"> Add Item</button>
 
