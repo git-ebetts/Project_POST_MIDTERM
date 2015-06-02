@@ -93,15 +93,32 @@ filepicker.pick(
   console.log(newitemPostRef)
   });
 
-    $scope.newitemPostRef = "";
+    // newitemPostRef$loaded().then(function(){
+      newitemPostRef.on('value', function() {
+         // $scope.newitemPostRef = "";
     $scope.adding_item = "";
     $scope.add_item_form.$setPristine();
-    // adding_item = 0;
+        adding_item = ""  });
     console.log(adding_item);
+    // $scope.newitemPostRef = "";
+    // $scope.adding_item = "";
+    // $scope.add_item_form.$setPristine();
+    // // adding_item = 0;
+    // console.log(adding_item);
 };
 }
 );
 });
+
+    // newitemPostRef.on('value', function(){
+    //      $scope.newitemPostRef = "";
+    // $scope.adding_item = "";
+    // $scope.add_item_form.$setPristine();
+    //     adding_item = "";  }
+    // console.log(adding_item);
+  
+
+
 
  // var authUser = $rootScope.currentUser.$id;
 
