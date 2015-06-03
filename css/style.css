@@ -233,6 +233,9 @@ color: $white;
   display: inline-block;
   float: right; }
 
+a {
+  text-decoration: none; }
+
 h1 {
   font-size: 36px;
   font-weight: lighter;
