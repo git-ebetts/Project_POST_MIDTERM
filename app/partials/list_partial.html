@@ -1,6 +1,6 @@
 <section class="content" ng-controller="ListController" ng-cloak>
 
-	<article class="item group" ng-repeat="item in items | filter:currentUser.group_name | filter:myData2.search">
+	<article class="item group" ng-repeat="(key, item) in items | filter:currentUser.group_name | filter:myData2.search">
 		<figure class="picturebox">
 		<img ng-src="{{ item.imageurl }}">
 		</figure>

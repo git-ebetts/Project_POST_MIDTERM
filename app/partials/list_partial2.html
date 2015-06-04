@@ -1,17 +1,16 @@
 <section class="content" ng-controller="ListController" ng-cloak>
 
-	<article class="item group" ng-repeat="item in items | filter:currentUser.group_name | filter:currentUser.lastname | filter:myData2.search">
+	<article class="item group" ng-repeat="(key, item) in items | filter:currentUser.group_name | filter:currentUser.lastname | filter:myData2.search">
 
 		<figure class="picturebox">
-		<img ng-src="{{ item.imageurl }}">
+			<img ng-src="{{ item.imageurl }}">
 		</figure>
 
 		<div class="postedbybox">Offered By: {{ item.firstname }} {{ item.lastname }} 
+		</div>
+		
+		<input type="image" class="contactbuttonm" src="images/delete.svg" ng-click="items.$remove(key)"></input>
 
-		</div>
-		<div class="contactbuttonm">
-		<a href="mailto:{{ item.email }}"><img src="images/delete.svg"></a>
-		</div>
 		<div class="descriptionbox"><p class="description">{{ item.description }}</p>
 			<div class="descriptionbox" ng-hide="currentUser"><p class="description">{{ item.user }}</p>
 
@@ -21,8 +20,8 @@
 				</div>
 			</article>
 			<!--FORM CONTAINER MOBILE -->
-		
-<div ng-include="'app/partials/form_partial.html'"></div>
+
+			<div ng-include="'app/partials/form_partial.html'"></div>
 
 
-</section>
+		</section>
